@@ -1,0 +1,119 @@
+// ШАПКА
+header
+  background: #0f5de4
+  padding: 20px 42px
+  .header-wrapper
+    display: flex
+    flex-direction: row
+    &_logotype
+      flex-basis: 16%
+      font-family: 'Lobster', cursive
+      font:
+        size: 25px
+        weight: 400
+      display: flex
+      align-items: center
+      color: white
+      img
+        width: 150px
+    &_tools
+      flex-basis: 16%
+      margin-left: 68%
+      .tools-auth
+        display: flex
+        align-items: center
+        a
+          margin-left: 20px
+          color: $light-color-theme
+          text-decoration: none
+          font-size: 18px
+
+
+
+
+
+section
+  background: $light-color-theme
+  .wrapper-container
+    display: flex
+    .breadcrumb-container
+      padding-top: 10px
+      width: calc(100% - 350px)
+    aside
+      width: 350px
+      background: transparent
+      padding: 10px 20px
+      .sidebar-container-header
+        a
+          font-size: 20px
+          text-decoration: none
+          color: $main-color-theme
+          font-weight: 700
+          &:hover
+            color: #0f4cbb
+    .content-container
+      width: calc(100% - 350px)
+      padding-top: 10px
+      padding-bottom: 20px
+      .hotel-item
+        background: #ffffff
+        margin-bottom: 20px
+        display: flex
+        border-radius: 3px
+        border: 1px solid #dee2e6
+        &:hover
+          box-shadow: 0 0 10px 0 #dee2e6
+        &_content
+          width: 80%
+          padding-left: 25px
+          padding-right: 25px
+          .content-group
+            padding: 20px 15px
+            display: flex
+          .content-header
+            justify-content: space-between
+            display: flex
+            border-bottom: 1px solid #cbcbcb
+            .hotel-title
+              display: flex
+              flex-direction: column
+              color: $main-color-theme !important
+              .hotel-star
+                color: #ffd700
+                i
+                  margin-right: 2px
+                  font-size: 12px
+              a
+                text-decoration: none
+                font-size: 18px
+                font-weight: 700
+                color: $main-color-theme !important
+              span
+                font-size: 13px
+          .content-footer
+            border-top: 1px solid #cbcbcb
+            justify-content: flex-end
+            display: flex
+          .content-price
+            justify-content: space-between
+            padding-top: 45px
+            padding-bottom: 45px
+            .price-title
+              font-size: 20px
+            .price, .price-to
+              display: block
+            .price
+              color: #292f37
+              font-size: 18px
+              font-weight: 600
+            .price-to
+              font-size: 13px
+
+
+
+
+
+footer
+  background: #212121
+  padding-top: 50px
+  padding-bottom: 50px

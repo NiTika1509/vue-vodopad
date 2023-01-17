@@ -1,0 +1,232 @@
+.app-admin
+  &-container
+    width: 100%
+  &-layout
+    height: 100vh
+
+.sidebar-container
+  height: 100vh
+  min-width: 280px
+  background: $dark-color-theme
+  &-logotype
+    height: 60px
+    color: #ffffff
+    padding-left: 30px
+    display: flex
+    align-items: center
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+    img
+      height: 28px
+
+
+.p-panelmenu
+  margin-top: 40px
+  padding-right: 30px
+  &-header-content
+    padding: 15px 0px 15px 30px !important
+    background: none !important
+    border: none !important
+    box-shadow: none !important
+    &:active
+      border: none !important
+  .p-panelmenu-content
+    background: none !important
+    .p-menuitem
+      &-content
+        color: #ffffff !important
+        &:hover
+          background: transparent !important
+    .p-menuitem-icon
+      color: #bbbbbb !important
+    .p-menuitem-text
+      color: #bbbbbb !important
+
+
+
+  &-header-action
+    display: flex
+    flex-direction: row-reverse
+    justify-content: space-between
+    align-items: center
+    padding: 0 !important
+    color: #ffffff !important
+    font:
+      weight: 600
+      size: 18px
+    text-transform: uppercase
+
+
+
+    &-text
+      margin-left: 5px
+
+
+
+
+
+
+
+
+
+.app-content
+  height: 100vh
+  display: flex
+  flex-direction: column
+  &-header
+    min-height: 60px
+    padding-right: 20px
+    padding-left: 30px
+    backdrop-filter: blur(10px)
+    background: $main-color-theme
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.55)
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &_date
+      .header_date-time
+        color: #fff
+        font-size: 26px
+        font-weight: 700
+      .header_date-month
+        color: #bbbbbb
+        font-size: 14px
+        font-weight: 500
+        display: flex
+    .account-avatar
+      padding: 14px 18px
+      box-sizing: border-box
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      margin-right: 2rem
+      overflow: hidden
+      transition: .5s
+      &:hover
+        background: $main-color-theme
+      &-wrapper
+        width: 32px
+        height: 32px
+        img
+          width: 100%
+          border-radius: 999px
+  &-container
+    height: 100%
+    padding: 40px 2rem
+    &-page
+      margin-top: 30px
+
+
+.badge-container
+  i
+    font-size: 1.5rem
+
+.p-tieredmenu
+  background: $light-color-theme
+  top: 61px !important
+  padding: 0
+  border-radius: 0px !important
+  .p-tieredmenu-root-list
+    outline: none
+  .p-menuitem
+    font:
+      size: 14px
+      weight: 400
+    &:hover
+      background: $light-color-theme
+    &-icon
+      margin-right: 8px
+
+
+
+
+
+
+/*Контент админки*/
+h1
+  font:
+    size: 24px !important
+    weight: 500
+.page-wrapper-content
+  box-shadow: 0 0 10px 0 rgba(33, 33, 33, 0.5)
+  border-radius: 8px
+  &-header
+    background: #ffffff
+    border-bottom: 1px solid #ffffff
+    padding: 30px 0px 30px 35px
+    border-top-left-radius: 8px
+    border-top-right-radius: 8px
+    background: $main-color-theme
+  &-body
+    background: #f8f8f8
+    overflow-y: scroll
+    max-height: 560px
+    .hotel-item_picture
+      width: 80px
+      display: inline-block
+      img
+        width: 100%
+
+
+  &-footer
+    background: #dadada
+    padding: 30px 0px 30px 35px
+    border-bottom-left-radius: 8px
+    border-bottom-right-radius: 8px
+
+
+.empty-layout
+  display: flex
+  align-items: center
+  justify-content: center
+  padding-top: 100px
+  padding-bottom: 100px
+  background: #fafafa
+  .auth-form-wrapper
+    background: #ffffff
+    padding: 30px 30px 70px
+    border: 1px solid #dadada
+    border-radius: 8px
+    width: 100%
+    max-width: 600px
+    box-shadow: 0 0 4px 0 rgba(107, 107, 107, 0.35)
+    .auth-form-name
+      margin-bottom: 30px
+    .auth-form-header
+      &-logotype
+        border-bottom: 1px solid #dadada
+        padding-bottom: 20px
+        margin-bottom: 50px
+        img
+          width: 60px
+        div
+          color: #212121
+          margin-top: -10px
+          font:
+            size: 40px
+            weight: 400
+            family: "Lobster", cursive
+
+.auth-form
+  display: flex
+  align-items: stretch
+  &-item
+    margin-bottom: 30px
+
+.auth-form-field
+  display: flex
+  justify-content: space-between
+  margin-bottom: 20px
+.auth-form-item-text
+  font-size: 14px
+  margin-bottom: 10px
+  display: flex
+  justify-content: space-between
+  label
+    margin-left: 10px
+
+.auth-form-successful
+  display: flex
+  align-items: center
+  flex-direction: column
+  padding: 20px 10px
