@@ -31,7 +31,7 @@
                       <i class="pi pi-star-fill" ></i>
                     </template>
                   </div>
-                  <router-link to="item.id">
+                  <router-link :to="`hotel/`+ item.id">
                     {{ item.name }}
                   </router-link>
                   <span>
@@ -58,9 +58,9 @@
                 </div>
               </div>
               <div class="content-footer content-group">
-                <PrimeButton>
-                  Посмотреть номера
-                </PrimeButton>
+                <router-link :to="`hotel/`+ item.id">
+                  <PrimeButton label="Подобрать номер" />
+                </router-link>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default {
   methods:{
     colorRating(rating){
       if(rating > 7 ) return "success";
-      if(rating < 4)  return "danger";
+      else if(rating < 4)  return "danger";
       else return "warning";
     }
   },

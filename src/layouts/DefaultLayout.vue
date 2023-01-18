@@ -1,5 +1,5 @@
 <template>
-  <ui-admin v-if="this.user" />
+  <ui-admin v-if="user" />
   <header>
     <div class="wrapper header-wrapper">
       <div class="header-wrapper_logotype">
@@ -18,10 +18,9 @@
           </div>
           <template v-else>
               <div class="tools-no-auth">
-                <PrimeButton type="button" icon="pi pi-user" label="Войти" @click="toggle">
-                </PrimeButton>
+                <PrimeButton type="button" icon="pi pi-user" label="Войти" @click="toggle" />
                 <OverlayPanel ref="op" :breakpoints="{'960px': '75vw', '640px': '100vw'}" :style="{width: '370px',height:'410px'}">
-                  <auth-login></auth-login>
+                  <auth-login />
                 </OverlayPanel>
               </div>
           </template>
