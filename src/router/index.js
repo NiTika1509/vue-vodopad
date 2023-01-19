@@ -30,8 +30,8 @@ const routes = [
     component: () => import('../views/Page/PageHome.vue')
   },
   {
-    path: '/hotel',
-    name: 'hotel',
+    path: '/hotels',
+    name: 'hotels',
     meta:{
       needAuth: false,
       breadCrumbs: () => {
@@ -44,6 +44,21 @@ const routes = [
       }
     },
     component: () => import('../views/Page/HotelList.vue')
+  },
+  {
+    path: '/hotel/:id',
+    meta:{
+      needAuth: false,
+      breadCrumbs: () => {
+        return [
+          {
+            home: {icon: 'pi pi-home', to: "/"}
+          },
+          [{label: 'Отели',to:'/hotels'}]
+        ]
+      }
+    },
+    component: () => import('../views/Page/DeteilHotel.vue')
   },
   {
     path: '/login',

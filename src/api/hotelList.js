@@ -21,21 +21,26 @@ import { sendGet } from "@/api/index";
         }catch(e){
             console.log(e);
         }
-
     }
-    export async function getHotelDeteil(){
+
+
+    export async function getHotelDetail(id){
         try{
             let response = await sendGet('/hotels')
+            response = response.forEach( (item) => {
+                if(item.id === Number(id)) return item
+            })
             console.log(response)
-            response = Object.values(response);
-            return response;
+            return response
         }catch(e){
             console.log(e);
         }
     }
+
+
     export async function getHotelRoomItems(){
         try{
-            let response = await sendGet('/hotels')
+            let response = await sendGet('/rooms')
             console.log(response)
             response = Object.values(response);
             return response;

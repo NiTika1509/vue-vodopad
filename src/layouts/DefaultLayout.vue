@@ -8,7 +8,7 @@
         </router-link>
       </div>
       <div class="header-wrapper_menu">
-        <router-link to="/hotel">
+        <router-link to="/hotels">
           Отели
         </router-link>
       </div>

@@ -31,7 +31,7 @@
                       <i class="pi pi-star-fill" ></i>
                     </template>
                   </div>
-                  <router-link :to="`hotel/`+ item.id">
+                  <router-link :to="`hotel/${item.id}`">
                     {{ item.name }}
                   </router-link>
                   <span>
@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="content-footer content-group">
-                <router-link :to="`hotel/`+ item.id">
+                <router-link :to="`hotel/${item.id}`">
                   <PrimeButton label="Подобрать номер" />
                 </router-link>
               </div>

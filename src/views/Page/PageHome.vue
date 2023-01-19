@@ -5,8 +5,8 @@
         <form action="" class="form-quiz">
           <CascadeSelect v-model="selectedCity" :options="countries" optionLabel="cname" optionGroupLabel="name"
                          :optionGroupChildren="['states', 'cities']" style="minWidth: 14rem" ></CascadeSelect>
-          <input type="text">
-          <input type="text">
+          <InputText type="text" />
+          <InputText type="text" />
         </form>
       </div>
     </div>

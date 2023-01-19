@@ -14,9 +14,7 @@ export default {
   computed:{
     breadCrumbs(){
       if(this.$route.meta?.breadCrumbs){
-        console.log(this.$route.meta.breadCrumbs())
         return this.$route.meta.breadCrumbs();
-
       }else{
         return [];
       }
