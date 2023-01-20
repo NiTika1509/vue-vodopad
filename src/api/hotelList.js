@@ -16,7 +16,7 @@ import { sendGet } from "@/api/index";
     // Функция
     export async function getHotelPreview(){
         try{
-            const response = await sendGet('/hotels')
+            const response = await sendGet('/hotels');
             return response;
         }catch(e){
             console.log(e);
@@ -26,23 +26,26 @@ import { sendGet } from "@/api/index";
 
     export async function getHotelDetail(id){
         try{
-            let response = await sendGet('/hotels')
-            response = response.forEach( (item) => {
-                if(item.id === Number(id)) return item
-            })
-            console.log(response)
-            return response
+            let response = await sendGet('/hotels');
+            response.forEach( (item) => {
+                if(item.id === Number(id)) response = item
+            });
+            return response;
         }catch(e){
             console.log(e);
         }
     }
 
 
-    export async function getHotelRoomItems(){
+    export async function getHotelRoomItems(id){
         try{
-            let response = await sendGet('/rooms')
-            console.log(response)
-            response = Object.values(response);
+            let response = await sendGet('/rooms');
+            response = response.map( (item) => {
+                if(item.parentId === Number(id)) {
+                    return item;
+                }
+            });
+            console.log(response);
             return response;
         }catch(e){
             console.log(e);

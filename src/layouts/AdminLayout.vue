@@ -53,18 +53,20 @@ import UiAccount from "@/components/UI/UiAccount";
 import UiBreadcrumb from "@/components/UI/UiBreadcrumb"
 import {adminNavigation} from "@/data/admin.navigation"
 import ErrorHandler from "@/components/ErrorHandler";
+import { mapGetters } from "vuex";
 
 export default {
   name: "AdminLayout",
   data() {
     return {
       date: null,
-      user: null,
       items: adminNavigation,
     }
   },
+  computed: {
+      ...mapGetters({ user: "getUserData" }),
+  },
   mounted() {
-    this.getAuthUser();
     this.dateFilter();
     setInterval(() => {
       this.dateFilter()
@@ -77,10 +79,6 @@ export default {
         minute: '2-digit',
       }
       this.date = new Intl.DateTimeFormat('ru-RU', options).format(new Date())
-
-    },
-    getAuthUser(){
-      this.user = this.$store.getters.getUserData;
 
     },
     getErrorMsg() {

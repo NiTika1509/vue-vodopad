@@ -96,7 +96,7 @@ export default {
       try{
         await this.$store.dispatch('login', formData);
         /* ПРОВЕРКА ЕСЛИ УСПЕШНАЯ АВТОРИЗАЦИЯ, ТО РЕДИРЕКТ */
-        this.$router.go('/admin');
+        this.$router.push('/admin');
         setTimeout(()=>{
           this.$store.commit('setError','login');
         }, 2000);

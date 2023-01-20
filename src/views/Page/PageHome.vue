@@ -3,8 +3,14 @@
     <div class="container-block-quiz">
       <div class="quiz-content">
         <form action="" class="form-quiz">
-          <CascadeSelect v-model="selectedCity" :options="countries" optionLabel="cname" optionGroupLabel="name"
-                         :optionGroupChildren="['states', 'cities']" style="minWidth: 14rem" ></CascadeSelect>
+          <CascadeSelect
+              v-model="selectedCity"
+              :options="countries"
+              optionLabel="cname"
+              optionGroupLabel="name"
+              :optionGroupChildren="['states', 'cities']"
+              style="minWidth: 14rem"
+          />
           <InputText type="text" />
           <InputText type="text" />
         </form>

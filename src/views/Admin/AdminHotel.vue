@@ -60,15 +60,13 @@ export default {
        hotels: null,
     }
   },
-  async mounted(){
-    this.hotels = await this.fetchHotel()
+  mounted(){
+    this.fetchHotel()
   },
   methods:{
     async fetchHotel(){
       try {
-        const hotelValue = await getHotelAdminList();
-        console.log(hotelValue);
-        return hotelValue;
+        this.hotels = await getHotelAdminList();
       }catch (e){
         this.$store.commit('setError',e.code);
       }

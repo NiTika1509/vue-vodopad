@@ -47,6 +47,7 @@ const routes = [
   },
   {
     path: '/hotel/:id',
+    name: "DetailHotel",
     meta:{
       needAuth: false,
       breadCrumbs: () => {
@@ -58,7 +59,7 @@ const routes = [
         ]
       }
     },
-    component: () => import('../views/Page/DeteilHotel.vue')
+    component: () => import('../views/Page/DetailHotel.vue')
   },
   {
     path: '/login',

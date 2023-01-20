@@ -15,9 +15,16 @@
     <div class="wrapper-container">
       <div class="content-container">
         <template v-for="item in items" :key="item.id">
-          <div :data-id="item.id" class="hotel-item">
+          <div class="hotel-item">
             <div class="hotel-item_image">
-              <PrimeGalleria :value="item.image" :responsiveOptions="responsiveOptions" :numVisible="5" containerStyle="max-width: 640px" :circular="true" :showItemNavigators="true" :showThumbnails="false">
+              <PrimeGalleria
+                  :value="item.image"
+                  :responsiveOptions="responsiveOptions"
+                  :numVisible="5"
+                  containerStyle="max-width: 640px"
+                  :circular="true"
+                  :showItemNavigators="true"
+                  :showThumbnails="false">
                 <template #item="data">
                   <img :src="data.item" style="width: 100%; display: block;" />
                 </template>
@@ -58,9 +65,7 @@
                 </div>
               </div>
               <div class="content-footer content-group">
-                <router-link :to="`hotel/${item.id}`">
-                  <PrimeButton label="Подобрать номер" />
-                </router-link>
+                <PrimeButton label="Подобрать номер" @click="navigate(item.id)" />
               </div>
             </div>
           </div>
@@ -115,7 +120,10 @@ export default {
       if(rating > 7 ) return "success";
       else if(rating < 4)  return "danger";
       else return "warning";
-    }
+    },
+    navigate(hotel_id) {
+      this.$router.push({name: "DetailHotel", params: {id: hotel_id}});
+    },
   },
 }
 </script>
