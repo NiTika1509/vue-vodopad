@@ -48,22 +48,55 @@
 
             <div class="hotel-detail_content">
               <div class="hotel-detail_image">
-                <PrimeGalleria :value="hotel.image" :numVisible="5" containerStyle="max-width: 640px" :circular="true" :showItemNavigators="true" :showThumbnails="false">
+                <PrimeGalleria :value="hotel.image" :numVisible="5" containerStyle="max-width: 100%" :circular="true" :showItemNavigators="true" :showThumbnails="false">
                   <template #item="data">
                     <img :src="data.item" style="width: 100%; display: block;" />
                   </template>
                 </PrimeGalleria>
               </div>
               <div class="hotel-detail_reviews">
-                <div class="hotel-rating">
-                  <PrimeTag :severity="colorRating(hotel.rating)" :value="hotel.rating" />
+                <div class="hotel-detail_reviews-title">
+                  <div class="">
+                    1 отзыв
+                  </div>
+                  <div class="hotel-rating">
+                    <i class="pi pi-bookmark-fill">
+                      <PrimeTag :severity="colorRating(hotel.rating)" :value="hotel.rating" />
+                    </i>
+                  </div>
                 </div>
+
                 <hotel-review :reviews="hotel.reviews" />
               </div>
             </div>
+            </div>
+
+          <div class="hotel-advantages-box">
+            <div class="hotel-box_header">
+              <h2>
+                Главные удобства:
+              </h2>
+            </div>
+            Безлимитный интернет
+            Парковка
+            Подходит для детей
+            Бар или ресторан
+            Кондиционер
+            Питание включенно
+          </div>
+
+          <div class="hotel-description-box">
+            <div class="hotel-box_header">
+              <h2>
+                Описание отеля
+              </h2>
+            </div>
+            {{ hotel.description }}
           </div>
 
           <div class="hotel-rooms-box">
+            <TabMenu />
+            <router-view />
             <hotel-rooms :rooms="rooms" />
           </div>
 

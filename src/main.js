@@ -54,6 +54,7 @@ import ProgressSpinner from 'primevue/progressspinner';
 import TabMenu from 'primevue/tabmenu';
 import Skeleton from 'primevue/skeleton';
 import ToggleButton from 'primevue/togglebutton';
+
 /*
 *  ИМПОРТЫ СТИЛЕЙ
 */

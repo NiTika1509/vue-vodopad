@@ -48,6 +48,9 @@ const routes = [
   {
     path: '/hotels/:id',
     name: "DetailHotel",
+    children:{
+
+    },
     meta:{
       needAuth: false,
       breadCrumbs: () => {
@@ -55,7 +58,10 @@ const routes = [
           {
             home: {icon: 'pi pi-home', to: "/"}
           },
-          [{label: 'Отели',to:'/hotels'}]
+          [
+            {label: 'Отели',to:'/hotels'},
+            {label: 'Отель "Vostok"'}
+          ]
         ]
       }
     },

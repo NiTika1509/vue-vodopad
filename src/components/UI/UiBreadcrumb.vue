@@ -6,15 +6,10 @@
 
 export default {
   name: "UiBreadcrumb",
-  data() {
-    return {
-      home: {icon: 'pi pi-home', to: '/admin'},
-    }
-  },
   computed:{
     breadCrumbs(){
       if(this.$route.meta?.breadCrumbs){
-        return this.$route.meta.breadCrumbs.call(this, this.$route);
+        return this.$route.meta.breadCrumbs();
       }else{
         return [];
       }
