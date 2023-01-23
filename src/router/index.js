@@ -43,10 +43,10 @@ const routes = [
         ]
       }
     },
-    component: () => import('../views/Page/HotelList.vue')
+    component: () => import('../views/Page/HotelPage.vue')
   },
   {
-    path: '/hotel/:id',
+    path: '/hotels/:id',
     name: "DetailHotel",
     meta:{
       needAuth: false,

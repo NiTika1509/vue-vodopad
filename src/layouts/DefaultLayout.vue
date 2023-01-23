@@ -24,7 +24,6 @@
                 </OverlayPanel>
               </div>
           </template>
-
       </div>
     </div>
   </header>
@@ -35,7 +34,7 @@
     <div class="wrapper">
       <div class="header-wrapper_logotype">
         <router-link to="/">
-          <img src="../../public/img/icons/logo.png">
+          Логотип
         </router-link>
       </div>
       <div class="header-wrapper_tools">

@@ -50,6 +50,10 @@ import Message from 'primevue/message';
 import OverlayPanel from 'primevue/overlaypanel';
 import Image from 'primevue/image';
 import Galleria from 'primevue/galleria';
+import ProgressSpinner from 'primevue/progressspinner';
+import TabMenu from 'primevue/tabmenu';
+import Skeleton from 'primevue/skeleton';
+import ToggleButton from 'primevue/togglebutton';
 /*
 *  ИМПОРТЫ СТИЛЕЙ
 */
@@ -104,7 +108,11 @@ app.component('InputText', InputText);
 app.component('PrimeButton', Button);
 app.component('ErrorMessage', Message);
 app.component('OverlayPanel', OverlayPanel);
+app.component('ProgressSpinner', ProgressSpinner);
+app.component('PrimeSkeleton', Skeleton);
 app.component('PrimeGalleria', Galleria);
+app.component('ToggleButton', ToggleButton);
+app.component('TabMenu', TabMenu);
 app.component('PrimeTag', Tag);
 app.directive('badge', BadgeDirective);
 

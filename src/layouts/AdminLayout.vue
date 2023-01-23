@@ -12,7 +12,7 @@
             </div>
             <div class="sidebar-container-menu">
               <nav class="sidebar-container-menu_navbar">
-                <PanelMenu :model="items"></PanelMenu>
+                <PanelMenu :model="items" />
               </nav>
             </div>
         </SplitterPanel>
