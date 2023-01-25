@@ -54,6 +54,7 @@ import ProgressSpinner from 'primevue/progressspinner';
 import TabMenu from 'primevue/tabmenu';
 import Skeleton from 'primevue/skeleton';
 import ToggleButton from 'primevue/togglebutton';
+import Carousel from 'primevue/carousel';
 
 /*
 *  ИМПОРТЫ СТИЛЕЙ
@@ -114,6 +115,7 @@ app.component('PrimeSkeleton', Skeleton);
 app.component('PrimeGalleria', Galleria);
 app.component('ToggleButton', ToggleButton);
 app.component('TabMenu', TabMenu);
+app.component('PrimeCarousel', Carousel);
 app.component('PrimeTag', Tag);
 app.directive('badge', BadgeDirective);
 

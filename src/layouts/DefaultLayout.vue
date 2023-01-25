@@ -13,7 +13,7 @@
         </router-link>
       </div>
       <div class="header-wrapper_tools">
-          <div class="tools-auth" v-if="user != null" >
+          <div class="tools-auth" v-if="user" >
             <ui-account :user="user" />
           </div>
           <template v-else>
@@ -48,27 +48,14 @@
 import UiAccount from "@/components/UI/UiAccount";
 import AuthLogin from '@/../src/views/Auth/AuthLogin'
 import UiAdmin from "@/components/UI/UiAdmin";
+import { mapGetters } from "vuex";
 
 export default {
   name: "DefaultLayout",
-  data(){
-    return {
-      user: null,
-    }
-  },
-
-  mounted() {
-    this.getAuthUser();
+  computed: {
+      ...mapGetters({ user: "getUserData" })
   },
   methods:{
-    async getAuthUser(){
-      try {
-        const gettersUser = this.$store.getters.getUserData;
-        this.user = gettersUser
-      }catch (e){
-        console.log(e)
-      }
-    },
     toggle(event) {
       this.$refs.op.toggle(event);
     },

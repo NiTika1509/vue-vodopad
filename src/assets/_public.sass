@@ -165,16 +165,31 @@ section
           border: 1px solid #dee2e6
           border-radius: 3px
           display: flex
+          height: 322px
           .hotel-detail_image
-            width: calc(100% - 300px)
+            width: calc(100% - 250px)
+            height: 100%
+            overflow: hidden
           .hotel-detail_reviews
-            &-title
+            width: 250px
+            &-header
               border-bottom: 1px solid #dadada
               height: 60px
-              width: 300px
               display: flex
               padding-left: 1rem
               justify-content: space-between
+              .reviews-header-title
+                display: flex
+                flex-direction: column
+                justify-content: center
+                .small-reviews_name
+                  color: #292f37
+                  font-size: 20px
+                  font-weight: 700
+                  margin-bottom: 2px
+                .small-reviews_count
+                  font-size: 13px
+                  color: $main-color-theme
               .hotel-rating
                 i
                   position: relative
@@ -187,6 +202,40 @@ section
                   font-size: 20px
                   left: 25%
                   top: 7px
+            &-body
+              height: calc(100% - 120px)
+              padding: 20px 0 0
+              .p-carousel,
+              .p-carousel-content,
+              .p-carousel-container,
+              .p-carousel-items-content,
+              .p-carousel-items-container,
+              .p-carousel-container,
+              .p-carousel-item
+                height: 100% !important
+              .small-reviews-item
+                background: #f4f4f4
+                border-radius: 6px
+                padding: 20px
+                height: 100% !important
+                color: #292f37
+                &_title
+                  display: flex
+                  justify-content: space-between
+                &_name
+                  margin-right: 10px
+                  font-weight: 700
+                &_message
+                  font-size: 13px
+            &-footer
+              height: 60px
+              display: flex
+              align-items: center
+              justify-content: center
+              .p-button
+                background: #e7f0f8
+                border: none
+                color: $main-color-theme
 
       .hotel-advantages-box
         margin-top: 5px

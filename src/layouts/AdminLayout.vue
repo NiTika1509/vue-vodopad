@@ -27,7 +27,7 @@
               <div class="app-content-header_tools">
 
                 <div class="account-container">
-                  <ui-account v-if="user != null" :user="user" />
+                  <ui-account v-if="user" :user="user" />
                 </div>
               </div>
             </div>

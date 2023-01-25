@@ -6,14 +6,19 @@ body
 
 
 .loading-box
-  width: calc(100% - 350px)
+  width: 100%
   display: flex
   justify-content: center
   align-items: center
   background: #ffffff
-  border: 1px solid #dee2e6
   border-radius: 3px
-  padding: 1rem
-  margin-top: 10px
-  margin-bottom: 10px
-  height: 500px
+  height: 100vh
+  position: fixed
+  top: 0
+  left: 0
+  transition-duration: 0.5s
+
+@keyframes p-progress-spinner-color
+  100%,0%
+    stroke: $main-color-theme
+

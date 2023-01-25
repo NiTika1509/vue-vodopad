@@ -36,6 +36,7 @@ export default {
         },
         {
           label:'Выйти', icon:'pi pi-fw pi-power-off',command: (e) => {
+            console.log(e)
               this.logout(e);
           }
         }
@@ -51,9 +52,10 @@ export default {
     async logout(){
       try {
         await this.$store.dispatch('logout');
-        await this.$router.push('/');
       }catch (e) {
         this.$store.commit('setError', e.message);
+      }finally {
+        this.$router.push('/');
       }
     }
   },

@@ -89,21 +89,24 @@ export default {
       this.loginHandler();
     },
     async loginHandler() {
-      const formData = {
-        email: this.email,
-        password: this.password
-      }
       try{
+
+        const formData = {
+          email: this.email,
+          password: this.password
+        };
+
         await this.$store.dispatch('login', formData);
         /* ПРОВЕРКА ЕСЛИ УСПЕШНАЯ АВТОРИЗАЦИЯ, ТО РЕДИРЕКТ */
-        this.$router.push('/admin');
-        setTimeout(()=>{
-          this.$store.commit('setError','login');
-        }, 2000);
+
       }catch (e){
         /* КОММИТИМ ОШИБКУ В КОМПОНЕНТ ВЫВОДА ОШИБКИ */
         await this.$store.commit('setError', e.message);
         throw e;
+      }finally {
+        this.$router.push('/admin');
+        this.$store.commit('setError','login');
+
       }
     },
     resetForm() {

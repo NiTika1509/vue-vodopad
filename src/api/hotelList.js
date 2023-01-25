@@ -45,7 +45,6 @@ import { sendGet } from "@/api/index";
                     return item;
                 }
             });
-            console.log(response);
             return response;
         }catch(e){
             console.log(e);

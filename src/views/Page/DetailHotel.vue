@@ -15,7 +15,7 @@
     <div class="wrapper">
       <div class="wrapper-container">
         <div v-if="loading" class="loading-box">
-          <progress-spinner />
+          <progress-spinner strokeWidth="10" />
         </div>
         <div v-else class="content-container">
           <div class="hotel-detail_box">
@@ -48,16 +48,13 @@
 
             <div class="hotel-detail_content">
               <div class="hotel-detail_image">
-                <PrimeGalleria :value="hotel.image" :numVisible="5" containerStyle="max-width: 100%" :circular="true" :showItemNavigators="true" :showThumbnails="false">
-                  <template #item="data">
-                    <img :src="data.item" style="width: 100%; display: block;" />
-                  </template>
-                </PrimeGalleria>
+                <ui-galleria :image="hotel.image" />
               </div>
               <div class="hotel-detail_reviews">
-                <div class="hotel-detail_reviews-title">
-                  <div class="">
-                    1 отзыв
+                <div class="hotel-detail_reviews-header">
+                  <div class="reviews-header-title">
+                    <span class="small-reviews_name">Отзывы</span>
+                    <span class="small-reviews_count">2 отзыва</span>
                   </div>
                   <div class="hotel-rating">
                     <i class="pi pi-bookmark-fill">
@@ -65,8 +62,12 @@
                     </i>
                   </div>
                 </div>
-
-                <hotel-review :reviews="hotel.reviews" />
+                <div class="hotel-detail_reviews-body">
+                  <hotel-review :reviews="hotel.reviews" />
+                </div>
+                <div class="hotel-detail_reviews-footer">
+                  <PrimeButton label="Читать все отзывы" />
+                </div>
               </div>
             </div>
             </div>
@@ -95,9 +96,7 @@
           </div>
 
           <div class="hotel-rooms-box">
-            <TabMenu />
-            <router-view />
-            <hotel-rooms :rooms="rooms" />
+            <hotel-rooms :id="id" :rooms="rooms" />
           </div>
 
         </div>
@@ -120,6 +119,7 @@
 <script>
 
 import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
+import UiGalleria from "@/components/UI/UiGalleria";
 import HotelReview from "@/components/Blocks/HotelReview";
 import HotelRooms from "@/components/Blocks/HotelRooms";
 import {getHotelDetail, getHotelRoomItems} from "@/api/hotelList";
@@ -140,7 +140,6 @@ export default {
       this.loading = true;
       this.hotel = await getHotelDetail(this.id);
       this.rooms = await getHotelRoomItems(this.id);
-      console.log(this.hotel)
     }catch (e){
       console.log(e)
       throw e;
@@ -156,7 +155,7 @@ export default {
     }
   },
   components:{
-    UiBreadcrumb, HotelReview, HotelRooms
+    UiBreadcrumb, HotelReview, HotelRooms, UiGalleria
   }
 }
 </script>
