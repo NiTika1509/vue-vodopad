@@ -62,10 +62,10 @@ export default {
     },
     navigateNext() {
       this.margin = this.margin - this.step
-      console.log("Маргин: " + this.margin)
-      console.log("Максимальный маргин: " + -this.max_margin)
-      console.log("Ширина блока: " + this.fullWidth)
-      console.log("Ширина - Маргин: " + (this.fullWidth + this.margin))
+      // console.log("Маргин: " + this.margin)
+      // console.log("Максимальный маргин: " + -this.max_margin)
+      // console.log("Ширина блока: " + this.fullWidth)
+      // console.log("Ширина - Маргин: " + (this.fullWidth + this.margin))
     }
   }
 }

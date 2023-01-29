@@ -6,11 +6,18 @@
 <script>
 export default {
   name: "HotelRooms",
+  setup () {
+      const test = (event) => console.log(event);
+
+      return {
+        test
+      };
+  },
   data() {
     return {
       items: [
-        {label: 'Список', icon: 'pi pi-fw pi-list', to: `/hotels/${this.id}/list`},
-        {label: 'Макет', icon: 'pi pi-fw pi-table', to: `/hotels/${this.id}/view`},
+        {label: 'Список', icon: 'pi pi-fw pi-list', to: { name: "rooms-list", params: { id: this.id }}},
+        {label: 'Макет', icon: 'pi pi-fw pi-table', to: { name: "rooms-view", params: { id: this.id }}},
       ]
     }
   },

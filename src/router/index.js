@@ -51,14 +51,13 @@ const routes = [
     children: [
       {
         path: 'list',
-        alias: '',
         name: 'rooms-list',
-        component: import('../views/Page/RoomsList.vue')
+        component: () => import('../views/Page/RoomsList.vue')
       },
       {
         path: 'view',
         name: 'rooms-view',
-        components: import('../views/Page/RoomsView.vue')
+        component: () => import('../views/Page/RoomsView.vue')
       }
     ],
     meta:{

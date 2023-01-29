@@ -1,5 +1,8 @@
 <template>
-    <div class="account-avatar">
+    <div v-if="loading" class="loading-box">
+      <progress-spinner strokeWidth="10" />
+    </div>
+    <div v-else class="account-avatar">
       <div class="account-avatar-wrapper" label="Toggle" @click="toggle">
         <PrimeAvatar
             class="p-avatar-circle"
@@ -42,6 +45,7 @@ export default {
         }
       ],
       token: null,
+      loading: false
     }
   },
 
@@ -55,7 +59,8 @@ export default {
       }catch (e) {
         this.$store.commit('setError', e.message);
       }finally {
-        this.$router.push('/');
+        this.loading = true
+        setTimeout(()=>{this.$router.push("/login")},1000);
       }
     }
   },

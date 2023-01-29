@@ -1,7 +1,7 @@
 <template>
 <div id="ui-admin-panel">
   <router-link to="/admin">
-    <PrimeButton class="p-button-success p-button-rounded" label="Админпанель" icon="pi pi-sign-in" type="button" />
+    <PrimeButton class="p-button-success" label="Админпанель" icon="pi pi-sign-in" type="button" />
   </router-link>
 </div>
 </template>

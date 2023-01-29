@@ -1,6 +1,8 @@
 <template>
-
-    <div class="auth-form-body">
+    <div v-if="loading" class="loading-box">
+      <progress-spinner strokeWidth="10" />
+    </div>
+    <div v-else class="auth-form-body">
       <h3 class="auth-form-name">Авторизация</h3>
       <div class="auth-form-field">
         <span>У вас нет аккаунта?</span>
@@ -59,7 +61,8 @@ export default {
       password: '',
       remember: null,
       submitted: false,
-      showMessage: false
+      showMessage: false,
+      loading: false
     }
   },
   setup: () => (
@@ -104,9 +107,8 @@ export default {
         await this.$store.commit('setError', e.message);
         throw e;
       }finally {
-        this.$router.push('/admin');
-        this.$store.commit('setError','login');
-
+        this.loading = true
+        setTimeout(()=>{this.$router.push('/')},1000)
       }
     },
     resetForm() {
