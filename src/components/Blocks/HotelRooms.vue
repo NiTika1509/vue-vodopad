@@ -6,13 +6,6 @@
 <script>
 export default {
   name: "HotelRooms",
-  setup () {
-      const test = (event) => console.log(event);
-
-      return {
-        test
-      };
-  },
   data() {
     return {
       items: [

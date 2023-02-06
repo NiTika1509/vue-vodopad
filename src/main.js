@@ -96,10 +96,12 @@ app.component('SplitterPanel', SplitterPanel);
 app.component('PrimeBadge', PrimeBadge);
 app.component('PrimeCheckbox', Checkbox);
 app.component('PrimeBreadcrumb', PrimeBreadcrumb);
+
 app.component('DataTable', DataTable);
 app.component('TableColumn', Column);
 app.component('ColumnGroup', ColumnGroup);
 app.component('TableRow', Row);
+
 app.component('PrimeSidebar', Sidebar);
 app.component('PrimeRating', Rating);
 app.component('PrimeImage', Image);

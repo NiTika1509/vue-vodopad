@@ -47,10 +47,11 @@ const routes = [
   },
   {
     path: '/hotels/:id',
-    name: "DetailHotel",
+    name: 'DetailHotel',
     children: [
       {
         path: 'list',
+        alias: '/',
         name: 'rooms-list',
         component: () => import('../views/Page/RoomsList.vue')
       },
