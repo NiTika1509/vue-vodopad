@@ -14,6 +14,7 @@ export default {
 
     getters: {
         isAdmin: (state) => state.credential.isAdmin,
+        token: (state) => state.credential.token,
         getUserData: (state) => state.credential.userData
     },
 
@@ -45,6 +46,10 @@ export default {
     },
 
     actions: {
+
+
+
+
         // eslint-disable-next-line no-unused-vars
         async login({dispatch, commit}, {email, password}){
             try {
@@ -80,16 +85,11 @@ export default {
                     password: password,
                     admin: false,
                     photoURL: 'https://firebasestorage.googleapis.com/v0/b/vodopad-8df2c.appspot.com/o/default-profile-picture1-768x768.jpg?alt=media&token=e6b87662-ac00-4291-a447-090a9e84f661',
-                    notification: 3,
-
+                    notification: [],
+                    favourites_hotels: [],
+                    booking: []
                 });
 
-                // await set(ref(database, `/users/${uid}/`),{
-                //     name: name,
-                //     email: email,
-                //     admin: false,
-                //     avatar: 'default-profile-picture1-768x768.jpg',
-                // });
             }catch (e){
                 commit('setError', e.message);
                 throw e;

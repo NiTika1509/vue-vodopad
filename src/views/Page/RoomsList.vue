@@ -1,53 +1,73 @@
 <template>
-
-<!--  <DataTable :value="categories" v-model:expandedRows="expandedRows" dataKey="id"-->
-<!--             @rowExpand="onRowExpand" @rowCollapse="onRowCollapse" responsiveLayout="scroll">-->
-
-<!--    <TableColumn :expander="true" headerStyle="width: 3rem" />-->
-<!--    <TableColumn field="name" header="Name" sortable></TableColumn>-->
-<!--    <template #expansion="slotProps">-->
-<!--      <div class="orders-subtable">-->
-<!--        {{ slotProps }}-->
-<!--&lt;!&ndash;        <DataTable :value="items_room" responsiveLayout="scroll">&ndash;&gt;-->
-<!--&lt;!&ndash;          <template v-if="room.category == slotProps">&ndash;&gt;-->
-<!--&lt;!&ndash;            &ndash;&gt;-->
-<!--&lt;!&ndash;          </template>&ndash;&gt;-->
-<!--&lt;!&ndash;          <TableColumn field="name" header="Id" sortable></TableColumn>&ndash;&gt;-->
-<!--&lt;!&ndash;          <TableColumn field="customer" header="Customer" sortable></TableColumn>&ndash;&gt;-->
-<!--&lt;!&ndash;          <TableColumn field="date" header="Date" sortable></TableColumn>&ndash;&gt;-->
-<!--&lt;!&ndash;          <TableColumn field="price" header="Цена" sortable>&ndash;&gt;-->
-<!--&lt;!&ndash;            <template #body="slotProps" sortable>&ndash;&gt;-->
-<!--&lt;!&ndash;              {{formatCurrency(slotProps.data.amount)}}&ndash;&gt;-->
-<!--&lt;!&ndash;            </template>&ndash;&gt;-->
-<!--&lt;!&ndash;          </TableColumn>&ndash;&gt;-->
-<!--&lt;!&ndash;          <TableColumn field="sleepPlace" header="Спальные места" sortable>&ndash;&gt;-->
-<!--&lt;!&ndash;            <template #body="slotProps">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span :class="'order-badge order-' + slotProps.data.status.toLowerCase()">{{slotProps.data.status}}</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </template>&ndash;&gt;-->
-<!--&lt;!&ndash;          </TableColumn>&ndash;&gt;-->
-<!--&lt;!&ndash;          <TableColumn headerStyle="width:4rem">&ndash;&gt;-->
-<!--&lt;!&ndash;            <template #body>&ndash;&gt;-->
-<!--&lt;!&ndash;              <Button icon="pi pi-search" />&ndash;&gt;-->
-<!--&lt;!&ndash;            </template>&ndash;&gt;-->
-<!--&lt;!&ndash;          </TableColumn>&ndash;&gt;-->
-<!--&lt;!&ndash;        </DataTable>&ndash;&gt;-->
-<!--      </div>-->
-<!--    </template>-->
-<!--  </DataTable>-->
-
-  {{ categories }}
-
-<!--  <template v-for="category in categories" :key="category">-->
-<!--    <h1>{{ category }}</h1>-->
-<!--&lt;!&ndash;    <template v-for="room of items_room" :key="room">&ndash;&gt;-->
-<!--&lt;!&ndash;      <template v-if="room.category === category">&ndash;&gt;-->
-<!--&lt;!&ndash;          {{ room }}&ndash;&gt;-->
-<!--&lt;!&ndash;      </template>&ndash;&gt;-->
-<!--&lt;!&ndash;    </template>&ndash;&gt;-->
-<!--  </template>-->
+  <div class="list-room-items">
+    <template v-for="category in categories" :key="category">
+      <div class="list-room-item">
 
 
+        <div class="list-room-item-table">
+          <div class="list-room-item-table_image">
+            <PrimeImage :src="category.photo[0]" />
+            <span class="list-room-item-table_image-count">{{ category.photo.length }} фото</span>
+          </div>
+          <div class="list-room-item-table-title">
+            <div class="list-room-item-table-name">
+              {{ category.name }}
+            </div>
 
+          </div>
+        </div>
+
+
+        <div class="list-room-subtable">
+          <DataTable :value="category.category_item" responsiveLayout="scroll">
+            <TableColumn field="id" header="Id" sortable />
+            <TableColumn field="id" header="Оплата" headerStyle="width: 200px">
+              <template #body="{data}">
+                <template v-if="data.prepayment">
+                  <div class="list-room_payment">
+                    <span class="true-text-color">
+                      <i class=" pi pi-undo" />Бесплатная отмена
+                    </span>
+                    <span>
+                      <i class=" pi pi-credit-card" />Предоплата
+                    </span>
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="list-room_payment">
+                    <span>
+                      <i class=" pi pi-undo" />50% от стоимости
+                    </span>
+                    <span>
+                      <i class=" pi pi-credit-card" />Оплата при заезде
+                    </span>
+                  </div>
+                </template>
+              </template>
+            </TableColumn>
+            <TableColumn field="price" header="Стоимость" headerStyle="width: 250px" sortable>
+              <template #body="{data}">
+                <div class="list-room_price">
+                  <span class="price">{{ data.price }} ₽</span>
+                  <span class="tax">Цена указана с учётом налогов</span>
+                  <span class="info">за ночь для 2 гостей</span>
+                </div>
+              </template>
+            </TableColumn>
+
+
+            <TableColumn>
+              <template #body="{data}">
+                <PrimeButton @click="booking(data)" label="Забронировать" />
+              </template>
+            </TableColumn>
+
+          </DataTable>
+        </div>
+      </div>
+    </template>
+
+  </div>
 </template>
 
 <script>
@@ -56,51 +76,56 @@ export default {
   data(){
     return{
       categories: [],
-      items_room: []
+      loading: true
     }
   },
   props:{
     rooms:{
-      type: Array
+      type: Array,
+      required: true
     }
   },
   async mounted(){
+    try {
+      this.loading = true;
+      await this.rooms.forEach( (floor) => {
+        floor.floorItems.forEach(room => {
 
 
-    this.rooms.forEach( (floor) => {
-      floor.items.forEach((floorRoom)=>{
-        floorRoom.floorItems.forEach(room=>{
-          this.items_room.push(room)
+          let isCategory = this.categories.find( category => category.name === room.category);
+
+          if(!isCategory && room.status){
+            this.categories.push({
+              name: room.category,
+              photo: room.photoGallery,
+              category_item: [room]
+            })
+          } else if(isCategory && room.status) {
+            isCategory.category_item.push(room)
+          }
+
         })
       })
-    })
+    }catch (e) {
+      console.log(e)
+    }finally {
+      this.loading = false;
+    }
 
 
-
-    this.items_room.forEach( item =>{
-      let isCategory = this.categories.findIndex( category => category.name === item.category);
-      if(isCategory === -1){
-        this.categories.push({
-          name: item.category,
-          photo: item.photoGallery,
-        })
-      }
-    })
-
-    this.items_room.filter( room => {
-      room.category == 6
-
-
-    });
-
-
-
-
-
+  },
+  methods:{
+    booking(order){
+        console.log(order)
+    }
   }
 }
 </script>
 
-<style scoped>
-
+<style lang="sass">
+  .p-image
+    width: 100px
+    display: block
+    img
+      width: 100%
 </style>

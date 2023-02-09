@@ -27,9 +27,7 @@ import { sendGet } from "@/api/index";
     export async function getHotelDetail(id){
         try{
             let response = await sendGet('/hotels');
-            response.forEach( (item) => {
-                if(item.id === Number(id)) response = item
-            });
+            response = response.find( item => item.id === +id)
             return response;
         }catch(e){
             console.log(e);
@@ -40,12 +38,8 @@ import { sendGet } from "@/api/index";
     export async function getHotelRoomItems(id){
         try{
             let response = await sendGet('/rooms');
-            response = response.map( (item) => {
-                if(item.parentId === Number(id)) {
-                    return item;
-                }
-            });
-            return response;
+            response = response.find( item => item.parentId === +id)
+            return response.items;
         }catch(e){
             console.log(e);
         }

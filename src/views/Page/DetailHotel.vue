@@ -22,8 +22,8 @@
 
 
             <div class="hotel-detail_header">
-              <div class="hotel-favourites">
-                <ToggleButton v-model="checked"
+              <div v-if="user" class="hotel-favourites">
+                <ToggleButton @click="changeFavorite" v-model="favourites"
                               onLabel=""
                               offLabel=""
                               onIcon="pi pi-bookmark-fill"
@@ -72,7 +72,7 @@
             </div>
             </div>
 
-          <div class="hotel-advantages-box">
+          <div class="hotel-content-box">
             <div class="hotel-box_header">
               <h2>
                 Главные удобства:
@@ -86,18 +86,63 @@
             Питание включенно
           </div>
 
-          <div class="hotel-description-box">
-            <div class="hotel-box_header">
-              <h2>
-                Описание отеля
-              </h2>
-            </div>
-            {{ hotel.description }}
+          <div class="hotel-content-box hotel ">
+            <hotel-rooms :id="id" :rooms="rooms"/>
           </div>
 
-          <div class="hotel-rooms-box">
-            <hotel-rooms :id="id" :rooms="rooms" />
+          <div class="hotel-content-box">
+            <div :class="{'desc-collapse' : collapse, 'flex': true}">
+              <div class="hotel-description_box">
+                <div class="hotel-box_header">
+                  <h2>
+                    <img src="https://st.worldota.net/master/65500b6-b604f0d/img/zen/roomspage/amenity/inrooms.svg" alt="">Расположение
+                  </h2>
+                </div>
+                <div class="hotel-description_body">
+                  <p class="hotel-description_body-text">
+                    {{ hotel.place }}
+                  </p>
+                </div>
+                <div class="hotel-box_header">
+                  <h2>
+                    <img src="https://st.worldota.net/master/65500b6-b604f0d/img/zen/roomspage/amenity/inrooms.svg" alt="">Описание отеля
+                  </h2>
+                </div>
+                <div class="hotel-description_body">
+                  <template v-for="text of hotel.description?.split('|')" :key="text">
+                    <p class="hotel-description_body-text">
+                      {{ text }}
+                    </p>
+                  </template>
+                </div>
+              </div>
+              <div class="hotel-about-info">
+                <div class="hotel-about-info-title">
+                  Факты об отеле
+                </div>
+                <div class="hotel-about-info-items">
+                  <div class="hotel-about-info-item">
+                    <div class="hotel-about-info-item-title">
+                      Тип розетки
+                    </div>
+                    <div class="hotel-about-info-item-description">
+                      <div class="hotel-about-info-item-socket-name">Европейская <i class="socket-tip pi pi-info" v-tooltip.top="'Европа говно'" /></div>
+                      <div class="hotel-about-info-item-socket-value">220В/50Гц</div>
+                    </div>
+                    <div class="hotel-about-info-item-description">
+                      <div class="hotel-about-info-item-socket-name">Европейская <i class="socket-tip pi pi-info" v-tooltip.top="'Европа говно'" /></div>
+                      <div class="hotel-about-info-item-socket-grounding">(с заземлением)</div>
+                      <div class="hotel-about-info-item-socket-value">220В/50Гц</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <PrimeButton icon="pi pi-chevron-down" class="p-button-text" label="Развернуть описание" @click="toggleDescription"  />
           </div>
+
+
 
         </div>
         <aside class="sidebar-container">
@@ -122,17 +167,20 @@ import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import UiGalleria from "@/components/UI/UiGalleria";
 import HotelReview from "@/components/Blocks/HotelReview";
 import HotelRooms from "@/components/Blocks/HotelRooms";
-import {getHotelDetail, getHotelRoomItems} from "@/api/hotelList";
+import { getHotelDetail, getHotelRoomItems } from "@/api/hotelList";
+import {mapGetters } from "vuex";
+// import { userChange } from "@/api/auth";
 
 export default {
-  name: "DeteilHotel",
+  name: "DetailHotel",
   data(){
     return{
       id: this.$route.params.id,
       hotel: {},
       rooms: null,
       loading: false,
-      checked: false
+      collapse: true,
+      favourites: false
     }
   },
   async mounted(){
@@ -140,6 +188,8 @@ export default {
       this.loading = true;
       this.hotel = await getHotelDetail(this.id);
       this.rooms = await getHotelRoomItems(this.id);
+      console.log(this.user.favourites_hotels)
+      // this.isFavourites();
     }catch (e){
       console.log(e)
       throw e;
@@ -147,12 +197,42 @@ export default {
       this.loading = false;
     }
   },
+  computed: {
+    ...mapGetters({ user: "getUserData", token: "token" }),
+  },
   methods:{
+    // isFavourites(){
+    //   if (this.user.favourites_hotels.length !== 0){
+    //     const findThisHotel = this.user.favourites_hotels.find( hotel => hotel.id === this.id);
+    //     this.favourites = !!findThisHotel;
+    //   } else{
+    //     this.favourites = false;
+    //   }
+    // },
     colorRating(rating){
       if(rating > 7 ) return "success";
       else if(rating < 4)  return "danger";
       else return "warning";
-    }
+    },
+    toggleDescription(){
+      this.collapse = !this.collapse;
+    },
+    // async changeFavorite(){
+    //   try {
+    //     if (this.favourites){
+    //       await userChange(this.token, {
+    //         favourites_hotels: [this.hotel]
+    //       })
+    //       this.favourites = true;
+    //     }else {
+    //       this.favourites = false;
+    //     }
+    //   }catch (e) {
+    //     console.log(e)
+    //   }
+    //
+    // }
+
   },
   components:{
     UiBreadcrumb, HotelReview, HotelRooms, UiGalleria
@@ -163,3 +243,6 @@ export default {
 <style scoped>
 
 </style>
+
+
+

@@ -17,3 +17,12 @@ export async function authRegister (userId, data) {
         throw error;
     }
 }
+
+
+export async function userChange(userId, data){
+    try{
+        return await sendPut(`/users/${userId}`,data)
+    }catch(e){
+        console.log(e);
+    }
+}

@@ -1,5 +1,5 @@
 <template>
-  <TabMenu :model="items" />
+  <TabMenu :model="items" :style="{'margin-bottom': '10px'}"/>
   <router-view :rooms="rooms" />
 </template>
 

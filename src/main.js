@@ -24,6 +24,8 @@ export const hash_config = {
 */
 
 import PrimeVue from 'primevue/config';
+import Tooltip from 'primevue/tooltip';
+import BadgeDirective from 'primevue/badgedirective';
 import Dialog from 'primevue/dialog';
 import PanelMenu from 'primevue/panelmenu';
 import TieredMenu from 'primevue/tieredmenu';
@@ -32,7 +34,6 @@ import PrimeSplitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 import PrimeBadge from 'primevue/badge';
 import PrimeBreadcrumb from 'primevue/breadcrumb';
-import BadgeDirective from 'primevue/badgedirective';
 import Checkbox from 'primevue/checkbox';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
@@ -96,12 +97,10 @@ app.component('SplitterPanel', SplitterPanel);
 app.component('PrimeBadge', PrimeBadge);
 app.component('PrimeCheckbox', Checkbox);
 app.component('PrimeBreadcrumb', PrimeBreadcrumb);
-
 app.component('DataTable', DataTable);
 app.component('TableColumn', Column);
 app.component('ColumnGroup', ColumnGroup);
 app.component('TableRow', Row);
-
 app.component('PrimeSidebar', Sidebar);
 app.component('PrimeRating', Rating);
 app.component('PrimeImage', Image);
@@ -119,7 +118,11 @@ app.component('ToggleButton', ToggleButton);
 app.component('TabMenu', TabMenu);
 app.component('PrimeCarousel', Carousel);
 app.component('PrimeTag', Tag);
+
+
 app.directive('badge', BadgeDirective);
+app.directive('tooltip', Tooltip);
+
 
 
 app.use(store).use(router).mount('#app');
