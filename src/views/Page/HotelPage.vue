@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { getHotelPreview } from "@/api/hotelList";
+import { getHotelPreview } from "@/api/hotels";
 import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import HotelsList from "@/components/Blocks/HotelList";
 import BlogPage from "@/views/Page/BlogPage";

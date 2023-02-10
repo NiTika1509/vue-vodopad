@@ -54,10 +54,10 @@ async function sendDelete(url) {
 }
 
 
-// Используется для удаления существующих данных на сервере.
+// Используется для внесений частичных изменений
 async function sendPatch(url, data) {
     try {
-        await api.patch(url, data);
+        await api.patch(`${url}.    json`, data);
     } catch (e) {
         console.log(e);
     }

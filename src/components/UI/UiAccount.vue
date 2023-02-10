@@ -6,8 +6,7 @@
       <div class="account-avatar-wrapper" label="Toggle" @click="toggle">
         <PrimeAvatar
             class="p-avatar-circle"
-            v-bind:image="user.photoURL"
-            v-badge.danger="user.notification.length - 1" />
+            :image="user.photoURL"/>
       </div>
       <TieredMenu ref="menu" :model="items" :popup="true" />
     </div>

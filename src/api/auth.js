@@ -1,4 +1,4 @@
-import { sendGet, sendPut} from '@/api';
+import { sendGet, sendPut, sendPatch} from '@/api';
 
 export async function authLogin (userId) {
     try {
@@ -19,9 +19,9 @@ export async function authRegister (userId, data) {
 }
 
 
-export async function userChange(userId, data){
+export async function userChange(path, userId, data){
     try{
-        return await sendPut(`/users/${userId}`,data)
+        return await sendPatch(`/users/${userId}/${path}`,data)
     }catch(e){
         console.log(e);
     }

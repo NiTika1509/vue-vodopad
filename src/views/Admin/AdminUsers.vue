@@ -42,7 +42,7 @@
 
 <script>
 // import UsersItems from "@/components/Blocks/UsersItems";
-import { UsersList } from "@/api/usersList";
+import { Users } from "@/api/users";
 
 export default {
   name: "AdminUsers",
@@ -58,7 +58,7 @@ export default {
   methods:{
     async getUsersList(){
       try {
-        const userValue = await UsersList();
+        const userValue = await Users();
         return userValue;
       }catch (e){
         this.$store.commit('setError',e.code);

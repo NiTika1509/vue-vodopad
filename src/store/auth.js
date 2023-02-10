@@ -85,7 +85,11 @@ export default {
                     password: password,
                     admin: false,
                     photoURL: 'https://firebasestorage.googleapis.com/v0/b/vodopad-8df2c.appspot.com/o/default-profile-picture1-768x768.jpg?alt=media&token=e6b87662-ac00-4291-a447-090a9e84f661',
-                    notification: [],
+                    notification: [
+                        {
+                            message: 'Спасибо за регистрацию на сайте Vodopad.ru!'
+                        }
+                    ],
                     favourites_hotels: [],
                     booking: []
                 });

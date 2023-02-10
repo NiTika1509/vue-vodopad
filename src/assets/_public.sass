@@ -39,7 +39,7 @@ section
     .breadcrumb-container
       padding-top: 10px
       width: calc(100% - 350px)
-    aside
+    aside.sidebar-container
       width: 350px
       background: transparent
       padding: 10px 20px
@@ -51,6 +51,40 @@ section
           font-weight: 700
           &:hover
             color: #0f4cbb
+      .sidebar-container-body
+        padding-top: 20px
+        &_item
+          margin-bottom: 10px
+          width: 100%
+          &-image
+            width: 100%
+            .item-image_container
+              padding-top: 10px
+              padding-bottom: 10px
+              .p-image
+                width: 100%
+                img
+                  border-radius: 10px
+          &-info
+            display: flex
+            justify-content: space-between
+            margin-bottom: 10px
+            .item-info-tag
+              color: #292f37
+              font-size: 12px
+              font-weight: 600
+              letter-spacing: 1.2px
+              line-height: 17px
+              text-decoration: none
+              text-transform: uppercase
+            .item-info-date
+              font-size: 11px
+              font-weight: 500
+          &-name
+            color: $main-color-theme
+            font-size: 16px
+            font-weight: 500
+            line-height: 1.38
     .content-container
       width: calc(100% - 350px)
       padding-top: 10px

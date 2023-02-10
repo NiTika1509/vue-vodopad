@@ -152,7 +152,7 @@
             </router-link>
           </div>
           <div class="sidebar-container-body">
-            <blog-page v-for="post in 4" :key="post" />
+            <blog-sidebar :posts="blog_post"  />
           </div>
         </aside>
       </div>
@@ -167,9 +167,13 @@ import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import UiGalleria from "@/components/UI/UiGalleria";
 import HotelReview from "@/components/Blocks/HotelReview";
 import HotelRooms from "@/components/Blocks/HotelRooms";
-import { getHotelDetail, getHotelRoomItems } from "@/api/hotelList";
-import {mapGetters } from "vuex";
-// import { userChange } from "@/api/auth";
+import BlogSidebar from "@/components/Blocks/BlogSidebar";
+
+import { sidebarBlogList } from "@/api/blog";
+import { getHotelDetail, getHotelRoomItems } from "@/api/hotels";
+import { userChange } from "@/api/auth";
+import { mapGetters } from "vuex";
+
 
 export default {
   name: "DetailHotel",
@@ -177,6 +181,7 @@ export default {
     return{
       id: this.$route.params.id,
       hotel: {},
+      blog_post: [],
       rooms: null,
       loading: false,
       collapse: true,
@@ -188,6 +193,7 @@ export default {
       this.loading = true;
       this.hotel = await getHotelDetail(this.id);
       this.rooms = await getHotelRoomItems(this.id);
+      this.blog_post = await sidebarBlogList(3);
       console.log(this.user.favourites_hotels)
       // this.isFavourites();
     }catch (e){
@@ -217,25 +223,29 @@ export default {
     toggleDescription(){
       this.collapse = !this.collapse;
     },
-    // async changeFavorite(){
-    //   try {
-    //     if (this.favourites){
-    //       await userChange(this.token, {
-    //         favourites_hotels: [this.hotel]
-    //       })
-    //       this.favourites = true;
-    //     }else {
-    //       this.favourites = false;
-    //     }
-    //   }catch (e) {
-    //     console.log(e)
-    //   }
-    //
-    // }
+    async changeFavorite(){
+      try {
+        if (this.favourites){
+          await userChange('favourites_hotels', this.token, [
+            this.hotel
+          ])
+          this.favourites = true;
+        }else {
+          this.favourites = false;
+        }
+      }catch (e) {
+        console.log(e)
+      }
+
+    }
 
   },
   components:{
-    UiBreadcrumb, HotelReview, HotelRooms, UiGalleria
+    UiBreadcrumb,
+    UiGalleria,
+    HotelReview,
+    HotelRooms,
+    BlogSidebar
   }
 }
 </script>

@@ -51,7 +51,7 @@
 
 <script>
 
-import { getHotelAdminList } from "@/api/hotelList";
+import { getHotelAdminList } from "@/api/hotels";
 // ЗАМЕНИТЬ МЕТОДЫ НА КОМПУТЕД
 export default {
   name: "AdminHotel",
