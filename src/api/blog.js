@@ -10,7 +10,7 @@ export async function sidebarBlogList(count){
         responseCount = response.length - 1;
         responseArray = [];
 
-        if (responseCount < count) responseGetCount = responseCount
+        if (responseCount < (count - 1) ) responseGetCount = responseCount
         else responseGetCount = responseCount - count
 
         for (responseCount; responseCount >= responseGetCount; responseCount--){

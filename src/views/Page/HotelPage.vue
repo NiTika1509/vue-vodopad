@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidebar-container-body">
-          <blog-page v-for="post in 4" :key="post" />
+          <blog-sidebar />
         </div>
       </aside>
     </div>
@@ -39,12 +39,14 @@
 import { getHotelPreview } from "@/api/hotels";
 import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import HotelsList from "@/components/Blocks/HotelList";
-import BlogPage from "@/views/Page/BlogPage";
+import BlogSidebar from "@/components/Blocks/BlogSidebar";
 
 export default {
   name: "HotelList",
   components: {
-    UiBreadcrumb, HotelsList, BlogPage
+    BlogSidebar,
+    UiBreadcrumb,
+    HotelsList,
   },
 
   data(){

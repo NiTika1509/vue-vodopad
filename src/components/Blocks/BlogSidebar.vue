@@ -1,7 +1,6 @@
 <template>
-  {{ posts }}
   <div class="sidebar-container-body_items">
-    <template v-for="post in posts" :key="post">
+    <template v-for="post in blog_post" :key="post">
         <div class="sidebar-container-body_item">
           <router-link to="">
             <div class="sidebar-container-body_item-image">
@@ -27,12 +26,20 @@
 </template>
 
 <script>
+import {sidebarBlogList} from "@/api/blog";
+
 export default {
   name: "BlogSidebar",
-  props: {
-    posts:{
-      type: Array,
-      required: true
+  data(){
+    return{
+      blog_post: [],
+    }
+  },
+  async mounted() {
+    try {
+      this.blog_post = await sidebarBlogList(3);
+    }catch (e) {
+      console.log(e)
     }
   }
 }
