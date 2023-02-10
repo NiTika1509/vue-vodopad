@@ -20,7 +20,15 @@
 
         <div class="list-room-subtable">
           <DataTable :value="category.category_item" responsiveLayout="scroll">
-            <TableColumn field="id" header="Id" sortable />
+            <TableColumn header="Id" >
+              <template #body="{data}">
+                {{ data.advantes}}
+                <div>Двухспальная кровать</div>
+                <div>Питание не включено</div>
+                <div>Окно</div>
+                <div>Для некурящих</div>
+              </template>
+            </TableColumn>
             <TableColumn field="id" header="Оплата" headerStyle="width: 200px">
               <template #body="{data}">
                 <template v-if="data.prepayment">

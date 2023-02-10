@@ -22,7 +22,7 @@
       <aside  class="sidebar-container">
         <div class="sidebar-container-header">
           <router-link to="/">
-            Гид по выбору
+            Блог путешествинника
           </router-link>
         </div>
 

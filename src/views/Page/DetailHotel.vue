@@ -75,15 +75,16 @@
           <div class="hotel-content-box">
             <div class="hotel-box_header">
               <h2>
-                Главные удобства:
+                <img src="https://st.worldota.net/master/65500b6-b604f0d/img/zen/roomspage/amenity/inrooms.svg" alt="">Расположение
               </h2>
             </div>
-            Безлимитный интернет
-            Парковка
-            Подходит для детей
-            Бар или ресторан
-            Кондиционер
-            Питание включенно
+            <div class="hotel-description_body">
+              <div>
+                <div v-for="value of hotel.advantages" :key="value">
+                  {{ value }}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="hotel-content-box hotel ">
@@ -148,7 +149,7 @@
         <aside class="sidebar-container">
           <div class="sidebar-container-header">
             <router-link to="/">
-              Гид по выбору
+              Блог путешествинника
             </router-link>
           </div>
           <div class="sidebar-container-body">
