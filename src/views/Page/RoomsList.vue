@@ -13,7 +13,6 @@
             <div class="list-room-item-table-name">
               {{ category.name }}
             </div>
-
           </div>
         </div>
 

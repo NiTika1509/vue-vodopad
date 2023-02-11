@@ -72,22 +72,30 @@
             </div>
             </div>
 
-          <div class="hotel-content-box">
-            <div class="hotel-box_header">
-              <h2>
-                <img src="https://st.worldota.net/master/65500b6-b604f0d/img/zen/roomspage/amenity/inrooms.svg" alt="">Расположение
-              </h2>
-            </div>
-            <div class="hotel-description_body">
-              <div>
-                <div v-for="value of hotel.advantages" :key="value">
-                  {{ value }}
+          <div class="hotel-content-box hotel-detail-tags">
+
+            <div class="hotel-detail-tags_box">
+              <div class="hotel-detail-tags-title">
+                  Главные удобства отеля
+              </div>
+              <div class="hotel-detail-tags-items">
+                <div class="hotel-detail-tags-item" v-for="tag in hotel.tags" :key="tag">
+                    <img :src="tag.icon" alt=""/>{{ tag.text }}
+                </div>
+                <div class="hotel-detail-tags-item_more">
+
+                  Какие есть ещё удобства?
                 </div>
               </div>
             </div>
+            <div class="hotel-detail-tags_box">
+
+            </div>
           </div>
 
-          <div class="hotel-content-box hotel ">
+
+
+          <div class="hotel-content-box">
             <hotel-rooms :id="id" :rooms="rooms"/>
           </div>
 
@@ -173,7 +181,7 @@ import BlogSidebar from "@/components/Blocks/BlogSidebar";
 import { getHotelDetail, getHotelRoomItems } from "@/api/hotels";
 // import { userChange } from "@/api/auth";
 import { mapGetters } from "vuex";
-
+import { tagsList } from "@/data/tagsList"
 
 export default {
   name: "DetailHotel",
@@ -181,6 +189,7 @@ export default {
     return{
       id: this.$route.params.id,
       hotel: {},
+      tags: tagsList,
       blog_post: [],
       rooms: null,
       loading: false,
@@ -200,20 +209,15 @@ export default {
       throw e;
     } finally {
       this.loading = false;
+      this.getTags(this.hotel.tags)
     }
   },
   computed: {
     ...mapGetters({ user: "getUserData", token: "token" }),
+
   },
   methods:{
-    // isFavourites(){
-    //   if (this.user.favourites_hotels.length !== 0){
-    //     const findThisHotel = this.user.favourites_hotels.find( hotel => hotel.id === this.id);
-    //     this.favourites = !!findThisHotel;
-    //   } else{
-    //     this.favourites = false;
-    //   }
-    // },
+
     colorRating(rating){
       if(rating > 7 ) return "success";
       else if(rating < 4)  return "danger";
@@ -222,6 +226,11 @@ export default {
     toggleDescription(){
       this.collapse = !this.collapse;
     },
+    getTags(tagsArray){
+
+      this.hotel.tags = tagsArray.map(tagName => this.tags[`${tagName}`])
+
+    }
     // async changeFavorite(){
     //   try {
     //     if (this.favourites){
@@ -237,7 +246,14 @@ export default {
     //   }
     //
     // }
-
+    // isFavourites(){
+    //   if (this.user.favourites_hotels.length !== 0){
+    //     const findThisHotel = this.user.favourites_hotels.find( hotel => hotel.id === this.id);
+    //     this.favourites = !!findThisHotel;
+    //   } else{
+    //     this.favourites = false;
+    //   }
+    // },
   },
   components:{
     UiBreadcrumb,

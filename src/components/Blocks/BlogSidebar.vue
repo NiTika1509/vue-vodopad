@@ -1,4 +1,5 @@
 <template>
+
   <div class="sidebar-container-body_items">
     <template v-for="post in blog_post" :key="post">
         <div class="sidebar-container-body_item">
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import {sidebarBlogList} from "@/api/blog";
+import { sidebarBlogList } from "@/api/blog";
 
 export default {
   name: "BlogSidebar",

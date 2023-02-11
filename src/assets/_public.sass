@@ -203,8 +203,7 @@ section
           height: 322px
           .hotel-detail_image
             width: calc(100% - 250px)
-            height: 100%
-            overflow: hidden
+            max-height: 100%
           .hotel-detail_reviews
             width: 250px
             &-header
@@ -277,7 +276,7 @@ section
   background: #ffffff
   border: 1px solid #dee2e6
   border-radius: 3px
-  padding: 1rem
+  padding: 20px
   .hotel-box_header
     h2
       color: $main-text-color-theme
@@ -388,6 +387,46 @@ section
     i
       margin-right: 5px
       font-size: 18px
+
+
+
+.hotel-detail-tags
+  display: flex
+  &_box
+    flex: 1
+    &:last-child
+      padding-left: 20px
+    &:first-child
+      padding-right: 20px
+      border-right: 1px solid rgb(45, 49, 55,0.21)
+  &-title
+    font-size: 18px
+    font-weight: 600
+    margin-bottom: 10px
+
+  &-items
+    height: 100px
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+  &-item
+    display: flex
+    align-items: center
+    margin-bottom: 10px
+    font-size: 14px
+    font-weight: 500
+    line-height: 20px
+    img
+      margin-right: 5px
+  &-item_more
+    margin-bottom: 10px
+    font-size: 14px
+    font-weight: 500
+    line-height: 20px
+    color: $main-color-theme
+    cursor: pointer
+
+
 
 footer
   background: #212121
