@@ -148,7 +148,8 @@
 
               </div>
             </div>
-            <PrimeButton icon="pi pi-chevron-down" class="p-button-text" label="Развернуть описание" @click="toggleDescription"  />
+
+            <ToggleButton class="desc-toggle" v-model="collapse" offLabel="Свернуть описание" onLabel="Развернуть описание" offIcon="pi pi-chevron-up" onIcon="pi pi-chevron-down" />
           </div>
 
 
@@ -161,7 +162,7 @@
             </router-link>
           </div>
           <div class="sidebar-container-body">
-            <blog-sidebar />
+            <blog-sidebar :posts="blog_post" />
           </div>
         </aside>
       </div>
@@ -182,6 +183,7 @@ import { getHotelDetail, getHotelRoomItems } from "@/api/hotels";
 // import { userChange } from "@/api/auth";
 import { mapGetters } from "vuex";
 import { tagsList } from "@/data/tagsList"
+import {sidebarBlogList} from "@/api/blog";
 
 export default {
   name: "DetailHotel",
@@ -200,6 +202,7 @@ export default {
   async mounted(){
     try{
       this.loading = true;
+      this.blog_post = await sidebarBlogList(3);
       this.hotel = await getHotelDetail(this.id);
       this.rooms = await getHotelRoomItems(this.id);
       // console.log(this.user.favourites_hotels)

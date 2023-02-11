@@ -61,11 +61,9 @@ section
             .item-image_container
               padding-top: 10px
               padding-bottom: 10px
-              .p-image
+              img
+                border-radius: 10px
                 width: 100%
-                img
-                  border-radius: 10px
-                  width: 100%
           &-info
             display: flex
             justify-content: space-between
@@ -300,6 +298,22 @@ section
 .desc-collapse
   height: 130px
   overflow-y: hidden
+
+.desc-toggle
+  color: $main-color-theme !important
+  background: transparent !important
+  border: none !important
+  box-shadow: none !important
+  border-radius: 4px
+  padding: 10px 16px
+  line-height: 18px
+  font-weight: 600 !important
+  .p-button-icon
+    color: $main-color-theme !important
+    font-size: 12px
+  .p-button-text
+    color: $main-color-theme
+    font-size: 16px
 
 
 .hotel-about-info

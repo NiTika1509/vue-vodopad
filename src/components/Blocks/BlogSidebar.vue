@@ -1,46 +1,38 @@
 <template>
 
   <div class="sidebar-container-body_items">
-    <template v-for="post in blog_post" :key="post">
-        <div class="sidebar-container-body_item">
-          <router-link to="">
-            <div class="sidebar-container-body_item-image">
-              <div class="item-image_container">
-                <PrimeImage :src="post.preview_photo" />
-              </div>
-            </div>
-            <div class="sidebar-container-body_item-info">
-              <div class="item-info-tag">
-                {{ post.tags[0] }}
-              </div>
-              <div class="item-info-date">
-                  {{ post.create_date }}
-              </div>
-            </div>
-            <div class="sidebar-container-body_item-name">
-                {{ post.name }}
-            </div>
-          </router-link>
+    <div class="sidebar-container-body_item" v-for="post in posts" :key="post">
+      <router-link to="">
+        <div class="sidebar-container-body_item-image">
+          <div class="item-image_container">
+            <img :src="post.previewPhoto" :alt="post.name"/>
+          </div>
         </div>
-    </template>
+        <div class="sidebar-container-body_item-info">
+          <div class="item-info-tag">
+            {{ post.tags[0] }}
+          </div>
+          <div class="item-info-date">
+              {{ post.createDate }}
+          </div>
+        </div>
+        <div class="sidebar-container-body_item-name">
+            {{ post.name }}
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-import { sidebarBlogList } from "@/api/blog";
+
 
 export default {
   name: "BlogSidebar",
-  data(){
-    return{
-      blog_post: [],
-    }
-  },
-  async mounted() {
-    try {
-      this.blog_post = await sidebarBlogList(3);
-    }catch (e) {
-      console.log(e)
+  props:{
+    posts:{
+      type: Array,
+      default: ()=> []
     }
   }
 }

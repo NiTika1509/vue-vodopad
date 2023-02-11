@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidebar-container-body">
-          <blog-sidebar />
+          <blog-sidebar :posts="blog_post" />
         </div>
       </aside>
     </div>
@@ -40,25 +40,24 @@ import { getHotelPreview } from "@/api/hotels";
 import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import HotelsList from "@/components/Blocks/HotelList";
 import BlogSidebar from "@/components/Blocks/BlogSidebar";
+import {sidebarBlogList} from "@/api/blog";
 
 export default {
   name: "HotelList",
-  components: {
-    BlogSidebar,
-    UiBreadcrumb,
-    HotelsList,
-  },
+
 
   data(){
     return{
       hotels: null,
-      loading: true
+      loading: true,
+      blog_post: [],
     }
   },
   async mounted(){
     try {
       this.loading = true;
       this.hotels = await getHotelPreview();
+      this.blog_post = await sidebarBlogList(3);
     }catch (e){
       console.log(e);
     }finally {
@@ -66,9 +65,10 @@ export default {
     }
 
   },
-  methods:{
-
-
+  components: {
+    BlogSidebar,
+    UiBreadcrumb,
+    HotelsList,
   },
 }
 </script>

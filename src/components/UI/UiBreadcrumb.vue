@@ -1,5 +1,5 @@
 <template >
-    <PrimeBreadcrumb v-if="breadCrumbs[1]" :home="breadCrumbs[0].home" :model="breadCrumbs[1]" />
+    <PrimeBreadcrumb v-if="breadCrumbs.path.length > 0" :home="breadCrumbs.home" :model="breadCrumbs.path" />
 </template>
 
 <script>

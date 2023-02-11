@@ -30,28 +30,28 @@ const routes = [
     component: () => import('../views/Page/PageHome.vue')
   },
   {
-    path: '/hotels',
+    path: '/hotel',
     name: 'hotels',
     meta:{
       needAuth: false,
       breadCrumbs: () => {
-        return [
-          {
-            home: {icon: 'pi pi-home', to: "/"}
-          },
-          [{label: 'Отели'}]
-        ]
+        return {
+          home: {icon: 'pi pi-home', to: "/"},
+          path: [
+              {label: 'Отели'}
+          ]
+        }
       }
     },
     component: () => import('../views/Page/HotelPage.vue')
   },
   {
-    path: '/hotels/:id',
+    path: '/hotel/:id',
     name: 'DetailHotel',
     children: [
       {
         path: 'list',
-        alias: '/',
+        alias: '',
         name: 'rooms-list',
         component: () => import('../views/Page/RoomsList.vue')
       },
@@ -64,15 +64,13 @@ const routes = [
     meta:{
       needAuth: false,
       breadCrumbs: (this_path) => {
-        return [
-          {
-            home: {icon: 'pi pi-home', to: "/"}
-          },
-          [
-            {label: 'Отели',to:'/hotels'},
+        return {
+          home: {icon: 'pi pi-home', to: "/"},
+          path: [
+            {label: 'Отели', to: '/hotel'},
             {label: this_path.params.id}
           ]
-        ]
+        }
       }
     },
     component: () => import('../views/Page/DetailHotel.vue')
@@ -95,7 +93,6 @@ const routes = [
     },
     component: () => import('../views/Auth/AuthRegister.vue')
   },
-
   {
     path: '/personal/:id',
     name: 'user',
@@ -106,8 +103,6 @@ const routes = [
       userid: null,
     }
   },
-
-
   {
     path: '/admin',
     name: 'admin',
@@ -160,16 +155,6 @@ const routes = [
         ]
       }},
   },
-  // 404 ОШИБКА :: ПОДКЛЮЧЕНИЕ КОМПОНЕНТА
-  // {
-  //   path: '*',
-  //   name: '404',
-  //   component: () => import('../views/NoPage.vue'),
-  //   meta:{
-  //     layout: 'default'
-  //   }
-  // }
-
 ]
 
 const router = createRouter({
