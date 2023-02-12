@@ -2,10 +2,10 @@
 
   <div class="sidebar-container-body_items">
     <div class="sidebar-container-body_item" v-for="post in posts" :key="post">
-      <router-link to="">
+      <router-link :to="`/blog/${post.id}`">
         <div class="sidebar-container-body_item-image">
           <div class="item-image_container">
-            <img :src="post.previewPhoto" :alt="post.name"/>
+            <PrimeImage :src="post.previewPhoto" :alt="post.name"/>
           </div>
         </div>
         <div class="sidebar-container-body_item-info">

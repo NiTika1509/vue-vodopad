@@ -21,7 +21,7 @@
       </div>
       <aside  class="sidebar-container">
         <div class="sidebar-container-header">
-          <router-link to="/">
+          <router-link to="/blog">
             Блог путешествинника
           </router-link>
         </div>

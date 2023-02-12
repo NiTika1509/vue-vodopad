@@ -21,7 +21,7 @@
               <i class="pi pi-star-fill" ></i>
             </template>
           </div>
-          <router-link :to="`hotels/${hotel.id}`">
+          <router-link :to="`hotel/${hotel.id}`">
             {{ hotel.name }}
           </router-link>
           <span>
