@@ -1,14 +1,5 @@
 <template>
 
-<section>
-  <div class="wrapper">
-    <div class="wrapper-container">
-      <div class="breadcrumb-container">
-        <ui-breadcrumb />
-      </div>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="wrapper">
@@ -37,10 +28,9 @@
 
 <script>
 import { getHotelPreview } from "@/api/hotels";
-import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import HotelsList from "@/components/Blocks/HotelList";
 import BlogSidebar from "@/components/Blocks/BlogSidebar";
-import {sidebarBlogList} from "@/api/blog";
+import { getPostToCount } from "@/api/blog";
 
 export default {
   name: "HotelList",
@@ -57,7 +47,7 @@ export default {
     try {
       this.loading = true;
       this.hotels = await getHotelPreview();
-      this.blog_post = await sidebarBlogList(3);
+      this.blog_post = await getPostToCount(3);
     }catch (e){
       console.log(e);
     }finally {
@@ -67,7 +57,6 @@ export default {
   },
   components: {
     BlogSidebar,
-    UiBreadcrumb,
     HotelsList,
   },
 }

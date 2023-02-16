@@ -63,17 +63,26 @@ const routes = [
     ],
     meta:{
       needAuth: false,
-      breadCrumbs: (this_path) => {
+      breadCrumbs: (params) => {
+
         return {
           home: {icon: 'pi pi-home', to: "/"},
           path: [
             {label: 'Отели', to: '/hotel'},
-            {label: this_path.params.id}
+            {label: params.params.name}
           ]
         }
       }
     },
     component: () => import('../views/Page/DetailHotel.vue')
+  },
+  {
+    path:'/blog',
+    name: 'blog',
+    meta: {
+      layout: 'default'
+    },
+    component: () => import('../views/Page/BlogPage')
   },
   {
     path: '/login',

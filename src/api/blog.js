@@ -1,7 +1,7 @@
 import { sendGet } from "@/api/index";
 
 
-export async function sidebarBlogList(count){
+export async function getPostToCount(count){
     try {
 
         let response, responseCount, responseArray, responseGetCount;

@@ -28,6 +28,15 @@
     </div>
   </header>
     <main>
+      <section>
+        <div class="wrapper">
+          <div class="wrapper-container">
+            <div class="breadcrumb-container">
+              <ui-breadcrumb />
+            </div>
+          </div>
+        </div>
+      </section>
       <router-view />
     </main>
   <footer>
@@ -46,8 +55,10 @@
 
 <script>
 import UiAccount from "@/components/UI/UiAccount";
+import UiBreadcrumb from "@/components/UI/UiBreadcrumb";
 import AuthLogin from '@/../src/views/Auth/AuthLogin'
 import UiAdmin from "@/components/UI/UiAdmin";
+
 import { mapGetters } from "vuex";
 
 export default {
@@ -61,7 +72,7 @@ export default {
     },
   },
   components:{
-     UiAccount, AuthLogin, UiAdmin,
+     UiAccount, AuthLogin, UiAdmin, UiBreadcrumb
   },
 }
 
