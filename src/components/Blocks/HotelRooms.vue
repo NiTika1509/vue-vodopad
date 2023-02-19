@@ -1,6 +1,6 @@
 <template>
   <TabMenu :model="items" :style="{'margin-bottom': '10px'}"/>
-  <router-view :rooms="rooms" />
+  <router-view :id="id" />
 </template>
 
 <script>
@@ -15,10 +15,6 @@ export default {
     }
   },
   props:{
-    rooms:{
-      type: Object,
-      required: true
-    },
     id:{
       type: String,
       required: true

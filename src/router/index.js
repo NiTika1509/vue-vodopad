@@ -35,6 +35,7 @@ const routes = [
     meta:{
       needAuth: false,
       breadCrumbs: () => {
+
         return {
           home: {icon: 'pi pi-home', to: "/"},
           path: [
@@ -63,13 +64,12 @@ const routes = [
     ],
     meta:{
       needAuth: false,
-      breadCrumbs: (params) => {
-
+      breadCrumbs: (route) => {
         return {
           home: {icon: 'pi pi-home', to: "/"},
           path: [
             {label: 'Отели', to: '/hotel'},
-            {label: params.params.name}
+            {label: route.params.id }
           ]
         }
       }

@@ -28,7 +28,7 @@
                   <h1>
                     {{ hotel.name }}
                   </h1>
-                  <span>
+                  <span class="hotel-title-address">
                     <i class="pi pi-map-marker" />
                     {{ hotel.address }}
                   </span>
@@ -85,7 +85,7 @@
 
 
             <div class="hotel-content-box">
-              <hotel-rooms :id="id" :rooms="rooms"/>
+              <hotel-rooms :id="id"/>
             </div>
 
             <div class="hotel-content-box">
@@ -134,10 +134,8 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
-
               <ToggleButton class="desc-toggle" v-model="collapse" offLabel="Свернуть описание" onLabel="Развернуть описание" offIcon="pi pi-chevron-up" onIcon="pi pi-chevron-down" />
             </div>
 
@@ -167,7 +165,7 @@ import HotelReview from "@/components/Blocks/HotelReview";
 import HotelRooms from "@/components/Blocks/HotelRooms";
 import BlogSidebar from "@/components/Blocks/BlogSidebar";
 
-import { getHotelDetail, getHotelRoomItems } from "@/api/hotels";
+import { getHotelDetail } from "@/api/hotels";
 // import { userChange } from "@/api/auth";
 import { mapGetters } from "vuex";
 import { tagsList } from "@/data/tagsList"
@@ -192,9 +190,7 @@ export default {
       this.loading = true;
       this.blog_post = await getPostToCount(3);
       this.hotel = await getHotelDetail(this.id);
-      this.rooms = await getHotelRoomItems(this.id);
-      console.log(this.$router)
-      // console.log(this.user.favourites_hotels)
+      this.$route.params.name = this.hotel.name
       // this.isFavourites();
     }catch (e){
       console.log(e)
